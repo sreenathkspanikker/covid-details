@@ -14,17 +14,18 @@
                 position: relative;
                 margin: 0;
                 .form-control{
-                    width: 350px;
-                    background-color: $color_three;
+                    width: 270px;
                     border: 0;
                     outline: none;
                     box-shadow: none;
-                    padding-left: calc(2.1 * var(--padding));
                     color:$color_six;
+                    border-radius: 50px;
+                    background-color: $color_three;
+                    padding-left: calc(2.6 * var(--padding));
                 }
                 .icon{
                     margin: auto;
-                    @include position(absolute, 0, auto, auto, 0);
+                    @include position(absolute, 2px, auto, auto, 0.3rem);
                     color: $color_five;
                     padding:  0.5rem;
                 }

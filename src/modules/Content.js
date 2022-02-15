@@ -23,7 +23,7 @@ export const Content = (props) => {
   
   return (
     <div className='app-content'>
-        <Components.Header />
+        <Components.Header/>
         <div className='app-coponents'>
           <PerfectScrollbar>
             {renderMenu(props.menu)}

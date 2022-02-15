@@ -3,7 +3,6 @@ import * as Components from "../components";
 import { GET } from '../server'
 import {  Row, Col } from 'react-bootstrap';
 
-
 export const TotalCount = (props) => {
     const [data, setData] = useState({})
     const [sumPerc, setSumperc] = useState('')
@@ -41,7 +40,7 @@ export const TotalCount = (props) => {
       return () => {
         isLoad = false
       }
-    }, [props])
+    }, [])
 
 
   return (
