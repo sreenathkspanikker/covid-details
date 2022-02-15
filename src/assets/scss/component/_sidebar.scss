@@ -1,0 +1,48 @@
+.app-sidebar{
+    width: 250px;
+    height: 100%;
+    position: relative;
+    background-color: $color_two;
+    padding: var(--padding) calc(2 * var(--padding));
+    .nav{
+        margin-top: calc(3* var(--margin));
+        .nav-link{
+            transition: all ease .4s;
+            margin-bottom: var(--margin);
+            border-radius: calc(3* var(--border-radius));
+            padding: 0.8rem calc(1.5 * var(--padding));
+            @include font-family($font-main, 1em, $color_five, 500, 1);
+            .icon{
+                margin-right: 0.8rem;
+            }
+            &:nth-child(1){
+                .icon{
+                    font-size: 1.1em; 
+                }
+            }
+            &:nth-child(2){
+                .icon{
+                    font-size: 1.15em; 
+                }
+            }
+            &:hover{
+                color: white;
+            }
+            &.active{
+                color: white;
+                background-color: $color_seven;
+            }
+        }
+    }
+    .icon-logo{
+        @include position(absolute, auto, auto, 0, 0);
+        margin: calc(2 * var(--margin));
+        background-color: $color_seven;
+        @include flex(center, center);
+        border-radius: 100%;
+        color: $color_two;
+        font-size: 1em;
+        height: 40px;
+        width: 40px;
+    }
+}

@@ -1,0 +1,91 @@
+// ANTD BUTTONS
+.ant-btn {
+  border: none;
+  padding: 0;
+  font-size: 1.25em;
+  color: $color_six;
+  outline: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  &::after{
+    display: none !important;
+  }
+  &:hover, &:focus{
+    color:  $color_seven;
+  }
+}
+
+// BOOTSTRAP BUTTONS
+.btn{
+  box-shadow: none !important;
+  outline: none !important;
+  &.btn-theme{
+    padding: 0;
+    color: $color_six;
+    font-size: 1.5em;
+    span{
+      display: block;
+    }
+    &:hover{
+      color: white;
+    }
+  }
+  &.btn-outline-primary{
+    width: 100%;
+    display: block;
+    padding: 0.8rem;
+    border-radius: 12px;
+    border-color: $color_four;
+    @include font-family($font-main, 1em, $color_four, 500, 1); 
+    &:hover{
+      color: $color_seven;
+      border-color: $color_seven;
+      background-color: $color_two;
+    }
+  }
+
+  &.btn-closes{
+    padding: 0;
+    font-size: 2.3em;
+    color: $color_five;
+    .icon{
+      display: block;
+    }
+    &:hover{
+      color: $color_seven;
+    }
+  }
+
+  &.btn-link{
+    @include flex(center, normal);
+    text-decoration: none;
+    color: $color_six;
+    padding: 1rem 0;
+    span{
+      display: inline-flex;
+      text-decoration: underline;
+      &.icon {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        text-decoration: none;
+      }
+    }
+    &.next{
+      max-width: 90px;
+      justify-content: right;
+      span{
+        &.icon{
+          margin: 0;
+          margin-left: 1rem;
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &.prev{
+      max-width: 90px;
+    }
+    &:hover{
+      color: $color_seven;
+    }
+  }
+}

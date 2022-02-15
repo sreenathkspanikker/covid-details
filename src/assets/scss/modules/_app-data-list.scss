@@ -1,0 +1,76 @@
+.app-data-list{
+    padding: 1rem 2rem;
+    .card-content, .ant-table-wrapper, .ant-spin-nested-loading, .ant-spin-container{
+        height: 100%;
+        .ant-table{
+            background-color: $color_three;
+            .ant-table-thead {
+                > tr {
+                    > th{
+                        text-transform: uppercase;
+                        background-color: $color_three;
+                        @include font-family($font-main, 1em, $color_six, 700, 1);
+                        &:before{
+                            background-color: rgba(white, 0.2) !important;
+                        }
+                    }
+                }
+            }
+            .ant-table-tbody {
+                > tr {
+                    > td{
+                        @include font-family($font-main, 1em, $color_five, 600, 1);
+                        &.ant-table-cell-row-hover{
+                            background-color:  $color_two;
+                        }
+                    }
+
+                    &.ant-table-expanded-row{
+                        .ant-table-cell{
+                            padding: 0;
+                            .app-exapndable{
+                                padding: 1rem;
+                                background-color: $color_two;
+                                h3{
+                                    letter-spacing: 0.1rem;
+                                    @include flex(center, normal);
+                                    @include font-family($font-main, 1.25em, $color_five, 700, 1.2em);
+                                    img{
+                                        max-width: 75px;
+                                        margin-right: 1rem;
+                                    }
+                                    span{
+                                        display: block;
+                                        em{
+                                            display: block;
+                                            font-style: normal;
+                                        }
+                                        small{
+                                            font-weight: 400;
+                                        }
+                                    }
+                                }
+                                .app-cards{
+                                    padding: 1rem;
+                                    border-radius: 0.5rem;
+                                    h3 {
+                                        @include font-family($font-main, 1em, $color_five, 600, 1);
+                                        margin-bottom: 1rem;
+                                    }
+                                    .card-content{
+                                        h2{
+                                            margin-bottom: 0;
+                                            letter-spacing: 0.012em;
+                                            @include font-family($font-main, 1.25em, $color_six, 300, 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

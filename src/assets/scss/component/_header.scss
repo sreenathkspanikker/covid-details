@@ -1,0 +1,44 @@
+.app-header{
+    width: 100%;
+    background-color: $color_two;
+    padding: 0.2rem var(--padding) 0.2rem 0;
+    .navbar {
+        width: 100%;
+        @include flex(center, space-between);
+        .navbar-brand{
+            text-transform: uppercase;
+            @include font-family($font-main, 1.15em, $color_six, 600, 1);
+        }
+        form{
+            .form-group{
+                position: relative;
+                margin: 0;
+                .form-control{
+                    width: 350px;
+                    background-color: $color_three;
+                    border: 0;
+                    outline: none;
+                    box-shadow: none;
+                    padding-left: calc(2.1 * var(--padding));
+                    color:$color_six;
+                }
+                .icon{
+                    margin: auto;
+                    @include position(absolute, 0, auto, auto, 0);
+                    color: $color_five;
+                    padding:  0.5rem;
+                }
+            }
+        }
+        .navbar-text{
+            @include font-family($font-main, 0.8em, $color_five, 400, 1);
+            margin-left: 1rem;
+            a{
+                color: rgba($color_seven, 0.6);
+                &:hover{
+                    color: rgba($color_seven, 1);
+                }
+            }   
+        }
+    }
+}

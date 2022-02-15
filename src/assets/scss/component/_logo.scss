@@ -1,0 +1,17 @@
+.app-logo{
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include flex(center, normal);
+    @include font-family($font-main, 1.15em, white, 600, 1.2em);
+    img{
+        max-width: 60px;
+    }
+    span{
+        margin-left: 0.5rem;
+        display: inline-flex;
+    }
+    &:hover{
+        color: $color_six;
+    }
+}

@@ -1,0 +1,15 @@
+.app-cards{
+    width: 100%;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    background-color: $color_three;
+    .card-title{
+        letter-spacing: 0.15rem;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        @include font-family($font-main, 1em, $color_six, 600, 1em); 
+    }
+    .card-content{
+
+    }
+}

@@ -1,0 +1,21 @@
+.app-content{
+    flex: 1;
+    padding-bottom: 2rem;
+    .app-coponents{
+        flex: 1;
+        height: 100%;
+        overflow: hidden;
+        padding-bottom: 1.5rem;
+        flex-direction: column;
+        @include flex(normal, normal);
+        .scrollbar-container{
+            padding: 1.5rem;
+            .ps__rail-y{
+                background-color: transparent !important;
+            }
+            .ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y{
+                background-color: $color_seven;
+            }
+        }
+    }
+}

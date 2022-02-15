@@ -1,0 +1,28 @@
+// BOOTSTRAP 
+@import '~bootstrap/scss/bootstrap-grid.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+
+// ANTD
+@import '~antd/dist/antd.css';
+@import '~react-circular-progressbar/dist/styles.css';
+@import '~react-perfect-scrollbar/dist/css/styles.css';
+
+
+// FONTS
+@import "./fonts/gilroy", "./fonts/icon";
+
+// UTILS
+@import "./utils/variables", "./utils/mixins";
+
+// NORMALISE
+@import "./core/normalize";
+
+// COMPONENTS
+@import "./component/icon", "./component/layout", "./component/input", "./component/button",
+  "./component/header", "./component/logo", "./component/sidebar", "./component/card", "./component/chart", "./component/antd_customise", "./component/vaccine-details", "./component/title";
+
+// MODULES
+@import "./modules/content", "./modules/total-count", "./modules/app-data-list", "./modules/vaccine", "./modules/covid-info";
+
+// PAGES
+@import "./pages/404",  "./pages/app";

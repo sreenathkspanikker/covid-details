@@ -1,0 +1,8 @@
+h3{
+    &.app-title{
+        @include font-family($font-main, 1em, $color_five, 600, 1);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin: 1rem 0;
+    }
+}

@@ -1,0 +1,69 @@
+.app-vaccine{
+    .app-cards{
+        &.card-vaccine-box{
+            transition: all ease .4s;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            .card-content{
+                h3{
+                    margin-bottom: 1rem;
+                    @include flex(center, normal);
+                    @include font-family($font-main, 1em, $color_six, 600, 1);  
+                    .badge {
+                        padding: 0;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 4px;
+                        margin-right: 0.5rem;
+                        letter-spacing: 0.01em;
+                        transition: all ease .4s;
+                        @include flex(center, center);
+                        border: 2px solid $color_seven;
+                        background-color: transparent !important;
+                        @include font-family('Sans-serif', 1em, $color_seven, 600, 1); 
+                    }
+                }
+                p{
+                    margin-bottom: 1rem;
+                    @include flex(normal, normal);
+                    @include font-family($font-main, 0.9em, $color_four, 400, 1);
+                    span{
+                        display: inline-block;
+                        margin-right: 0.5rem;
+                        color: $color_five;
+                        font-weight: 600;
+                    }
+                    &.item-details{
+                        max-height: 75px;
+                        display: block;
+                        overflow: hidden;
+                        line-height: 1.3em;
+                        text-overflow: ellipsis;
+                    }
+                }
+                .btn{
+                    margin-top: 1.5rem;
+                }
+            }
+            &:hover{
+                background-color: $color_two;
+                .card-content{
+                    h3{
+                        .badge{
+                            color: white;
+                            background-color: $color_seven !important;
+                        }
+                    }
+                    .btn{
+                        color: $color_seven;
+                        border-color: $color_seven;
+                        &:hover{
+                            color:white;
+                            background-color: $color_seven;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

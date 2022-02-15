@@ -1,0 +1,10 @@
+.app-covid-info{
+    p{
+        @include font-family($font-main, 1em, $color_four, 400, 1.6em);
+    }
+    ol {
+        li{
+            @include font-family($font-main, 1em, $color_four, 400, 1.6em);
+        }
+    }
+}
