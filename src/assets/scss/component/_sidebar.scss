@@ -2,7 +2,9 @@
     width: 250px;
     height: 100%;
     position: relative;
+    flex-direction: column;
     background-color: $color_two;
+    @include flex(center, space-between);
     padding: var(--padding) calc(2 * var(--padding));
     .nav{
         margin-top: calc(3* var(--margin));
@@ -14,6 +16,11 @@
             @include font-family($font-main, 1em, $color_five, 500, 1);
             .icon{
                 margin-right: 0.8rem;
+            }
+            img{
+                width: 30px;
+                height: 30px;
+                border-radius: 100px;
             }
             &:nth-child(1){
                 .icon{
@@ -34,15 +41,25 @@
             }
         }
     }
-    .icon-logo{
-        @include position(absolute, auto, auto, 0, 0);
-        margin: calc(2 * var(--margin));
-        background-color: $color_seven;
-        @include flex(center, center);
-        border-radius: 100%;
-        color: $color_two;
-        font-size: 1em;
-        height: 40px;
-        width: 40px;
+    .btn-aboutme{
+        @include font-family($font-main, 1em, white, 500, 1);
+        background-color: $color_three;
+        @include flex(center, normal);
+        letter-spacing: 0.04em;
+        border-radius: 6px;
+        padding: 0.6rem;
+        width: 100%;
+        box-shadow: 3px 3px 3px 2px rgba(0,0,0,0.53)!important;
+        -webkit-box-shadow: 3px 3px 3px 2px rgba(0,0,0,0.53)!important;
+        -moz-box-shadow: 3px 3px 3px 2px rgba(0,0,0,0.53)!important;
+        img{
+            width: 40px;
+            height: 40px;
+            margin-right: 1rem;
+            border-radius: 6px;
+        }
+        &:hover{
+            background-color: rgba($color_five, 0.3);
+        }
     }
 }

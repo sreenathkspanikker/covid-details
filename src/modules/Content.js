@@ -14,8 +14,8 @@ export const Content = (props) => {
         return <Modules.Vaccine  />
       case 'Covid Info':
         return <Modules.CovidInfo  />
-      case 'Contact':
-        return <h3>Contact</h3>
+      case 'About Me':
+        return <Modules.About />
       default:
         return <Modules.TotalCount  />
     }

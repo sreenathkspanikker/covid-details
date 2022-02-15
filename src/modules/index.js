@@ -1,3 +1,4 @@
+export * from './About'
 export * from './Content'
 export * from './Vaccine'
 export * from './TotalCount'
