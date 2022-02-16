@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import * as Components from "../components";
 import { GET } from '../server'
 import { Button, Table, Tooltip } from 'antd';
-import { Image, Row, Col } from 'react-bootstrap';
+import { Image, Row, Col, Form, FormControl } from 'react-bootstrap';
 
 export const CountryList = () => {
-    const [data, setData] = useState([])
+    let [data, setData] = useState([])
+    const [allData, setAlldata] = useState([])
     const columns = [
       {
         title: 'Country',
@@ -100,6 +101,7 @@ export const CountryList = () => {
           if (res) {
               const value = res.sort((a, b) => a.cases < b.cases ? 1 : a.cases > b.cases ? -1 : 0)
               setData(value)
+              setAlldata(value)
             }
         }
         fetchData()
@@ -109,9 +111,20 @@ export const CountryList = () => {
       }
     }, [])
 
+    const handleFilter = e => {
+      const value = e.target.value
+      setData(value.length > 0 ? data.filter(i => i.country.toLowerCase().match(value)) : allData)
+    }
+
   return (
     <div className='app-data-list-wrap'>
-      <Components.Title className="mt-0">Covid case list In all world</Components.Title>
+      <div className='app-title-wrap'>
+        <Components.Title className="mt-0">Covid case list In all world</Components.Title>
+        <Form.Group className='form-group app-serch-box'>
+          <FormControl type="search" placeholder="Search" aria-label="Search" onChange={e=> handleFilter(e)}/>
+          <Components.Icon name="search" />
+        </Form.Group>
+      </div>
       <Components.Cards className="app-data-list mt-3"  >
         <Table 
           columns={columns}

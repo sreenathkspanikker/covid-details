@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Modules from "../modules";
-import * as Components from "../components";
+// import * as Components from "../components";
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 export const Content = (props) => {
@@ -23,7 +23,7 @@ export const Content = (props) => {
   
   return (
     <div className='app-content'>
-        <Components.Header/>
+        {/* <Components.Header/> */}
         <div className='app-coponents'>
           <PerfectScrollbar>
             {renderMenu(props.menu)}

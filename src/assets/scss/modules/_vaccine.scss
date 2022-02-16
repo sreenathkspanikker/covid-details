@@ -1,4 +1,11 @@
 .app-vaccine{
+    .app-title-wrap{
+        margin-bottom: 1rem;
+        @include flex(center, space-between);
+        .app-title{
+            margin: 0;
+        }
+    }
     .app-cards{
         &.card-vaccine-box{
             transition: all ease .4s;

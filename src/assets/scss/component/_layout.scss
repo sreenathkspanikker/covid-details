@@ -3,3 +3,9 @@
         display: none !important;
     }
 }
+
+.card-empty{
+    .ant-empty-description{
+        color: $color_five;
+    }
+}

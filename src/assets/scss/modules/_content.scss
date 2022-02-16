@@ -1,11 +1,9 @@
 .app-content{
     flex: 1;
-    padding-bottom: 2rem;
     .app-coponents{
         flex: 1;
         height: 100%;
         overflow: hidden;
-        padding-bottom: 1.5rem;
         flex-direction: column;
         @include flex(normal, normal);
         .scrollbar-container{

@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Button, Badge } from 'react-bootstrap';
+import { Row, Col, Button, Badge, Form, FormControl } from 'react-bootstrap';
 import * as Components from "../components";
 import { GET } from '../server';
+import { Empty } from 'antd';
 
 export const Vaccine = () => {
+  const [list, setList] = useState([])
   const [data, setData] = useState([])
+  const [allData, setAlldata] = useState([])
   const [details, setDetails] = useState({});
-
-  const handleClick = (key, data, idx) => setDetails({key, data, idx })
-  const handleClose = (e) => setDetails({key: e.key, data: e.data })
 
   useEffect(() => {
       let isLoad = true
       if (isLoad) {
         const fetchData = async () => {
           const res = await GET('/vaccine')
-          if (res) setData(res)
+          if (res) {
+            setData(res)
+            setList(res.data)
+            setAlldata(res.data)
+          }
         }
         fetchData()
       }
@@ -24,12 +28,26 @@ export const Vaccine = () => {
       }
   }, [])
 
+  const handleClick = (key, data, idx) => setDetails({key, data, idx })
+  const handleClose = (e) => setDetails({key: e.key, data: e.data })
+
+  const handleFilter = e => {
+    const value = e.target.value
+    setList(value.length > 0 ? list?.filter(i => i.details.toLowerCase().match(value)) : allData)
+  }
+
   return (
     <div className={`app-vaccine ${details.key}`}>
-      <Components.Title className="mt-0">Covid vaccine list</Components.Title>
+      <div className='app-title-wrap'>
+        <Components.Title className="mt-0">Covid vaccine list</Components.Title>
+        <Form.Group className='form-group app-serch-box'>
+          <FormControl type="search" placeholder="Search" aria-label="Search" onChange={e=> handleFilter(e)}/>
+          <Components.Icon name="search" />
+        </Form.Group>
+      </div>
       {!details.key ? 
         <Row>
-            {data?.data?.map((items, idx) => {
+            {list?.length > 0 ? list?.map((items, idx) => {
               return (
                   <Col sm={4} key={idx}>
                     <Components.Cards className="card-vaccine-box">
@@ -42,7 +60,7 @@ export const Vaccine = () => {
                     </Components.Cards>
                   </Col>
               )
-            })}
+            }): <Components.Cards className="card-empty"><Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /></Components.Cards>}
         </Row>
         : <Components.VaccinDetails data={details} handleClose={e => handleClose(e)}/>
       }
