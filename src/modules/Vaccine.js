@@ -4,7 +4,7 @@ import * as Components from "../components";
 import { GET } from '../server';
 import { Empty } from 'antd';
 
-export const Vaccine = () => {
+export const Vaccine = (props) => {
   const [list, setList] = useState([])
   const [data, setData] = useState([])
   const [allData, setAlldata] = useState([])
@@ -28,8 +28,12 @@ export const Vaccine = () => {
       }
   }, [])
 
-  const handleClick = (key, data, idx) => setDetails({key, data, idx })
+  const handleClick = (key, data, idx) => {
+    setDetails({key, data, idx })
+    props.scrollReset(true)
+  }
   const handleClose = (e) => setDetails({key: e.key, data: e.data })
+  const scrollReset = (e) => props.scrollReset(e)
 
   const handleFilter = e => {
     const value = e.target.value
@@ -62,7 +66,7 @@ export const Vaccine = () => {
               )
             }): <Components.Cards className="card-empty"><Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /></Components.Cards>}
         </Row>
-        : <Components.VaccinDetails data={details} handleClose={e => handleClose(e)}/>
+        : <Components.VaccinDetails data={details} handleClose={e => handleClose(e)} scrollReset={(e)=> scrollReset(e)}/>
       }
 
     </div>

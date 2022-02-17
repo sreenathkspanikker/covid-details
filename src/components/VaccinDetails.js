@@ -11,8 +11,6 @@ export const VaccinDetails = (props) => {
     useEffect(() => {
         let isLoad = true
         if (isLoad) {
-            console.log('e',  props?.data?.idx);
-            console.log('lastIndex', props.data?.data?.data.length - 1)
             setIdx( props?.data?.idx)
             setData(props?.data?.data)
             setLastindex(props.data?.data?.data.length - 1)
@@ -23,12 +21,16 @@ export const VaccinDetails = (props) => {
         }
     }, [props])
     
-    const handleClose = () => props.handleClose({key: false, data: {}, idx: null })
+    const handleClose = () => {
+        props.handleClose({key: false, data: {}, idx: null })
+        props.scrollReset(true)  
+    }
 
     const handleNav = (e) => {
         const value = e === 0 ? 0 : e
         setIdx(value)
         setDetails(data?.data.filter((items, i) => i === value && items))
+        props.scrollReset(true)        
     }
 
     return (

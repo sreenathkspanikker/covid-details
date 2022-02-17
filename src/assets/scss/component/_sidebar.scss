@@ -11,6 +11,7 @@
         .nav-link{
             transition: all ease .4s;
             margin-bottom: var(--margin);
+            @include flex(center, normal);
             border-radius: calc(3* var(--border-radius));
             padding: 0.8rem calc(1.5 * var(--padding));
             @include font-family($font-main, 1em, $color_five, 500, 1);

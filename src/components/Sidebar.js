@@ -22,10 +22,10 @@ export const Sidebar = (props) => {
       <div className='header-top'>
         <Components.Logo />
         <Nav defaultActiveKey="link-1" className="flex-column">
-            <Nav.Link eventKey="link-1" onClick={(e)=> onClick(e)}><Components.Icon name="home"/>Home</Nav.Link>
-            <Nav.Link eventKey="link-2" onClick={(e)=> onClick(e)}><Components.Icon name="vaccine"/>Country List</Nav.Link>
-            <Nav.Link eventKey="link-3" onClick={(e)=> onClick(e)}><Components.Icon name="world" />Vaccine</Nav.Link>
-            <Nav.Link eventKey="link-4" onClick={(e)=> onClick(e)}><Components.Icon name="covid" />Covid Info</Nav.Link>
+            <Nav.Link eventKey="link-1" onClick={(e)=> onClick(e)}><Components.Icon name="home" size={20}/>Home</Nav.Link>
+            <Nav.Link eventKey="link-2" onClick={(e)=> onClick(e)}><Components.Icon name="world"/>Country List</Nav.Link>
+            <Nav.Link eventKey="link-3" onClick={(e)=> onClick(e)}><Components.Icon name="vaccine" size={20}/>Vaccine</Nav.Link>
+            <Nav.Link eventKey="link-4" onClick={(e)=> onClick(e)}><Components.Icon name="covid" size={20} />Covid Info</Nav.Link>
         </Nav>
       </div>
       <Button variant='aboutme' onClick={(e)=> onClick(e)}>
