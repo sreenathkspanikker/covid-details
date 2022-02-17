@@ -23,7 +23,7 @@ export const Content = (props) => {
       case 'About Me':
         return <Modules.About />
       default:
-        return <Modules.TotalCount  />
+        return <Modules.TotalCounts  />
     }
   }
   

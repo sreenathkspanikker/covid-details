@@ -17,3 +17,25 @@
         }
     }
 }
+
+.app-totals{
+    margin-bottom: 1rem;
+    .app-totals-list{
+        padding: 1rem;
+        background-color: $color_two;
+        ul{
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            li{
+                @include flex(center, space-between);
+                @include font-family($font-main, 1em, $color_four, 300, 2em);
+                span{
+                    font-weight: 600;
+                    color:  $color_five;
+                }
+            }
+        }
+    }
+
+}
