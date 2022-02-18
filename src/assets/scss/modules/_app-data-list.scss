@@ -5,9 +5,21 @@
         .app-title{
             margin: 0;
         }
+        @include media-breakpoint-down(md) {
+            display: block;
+            .form-group{
+                margin-top: 0.5rem;
+                .form-control{
+                    width: 100%;
+                }
+            }
+        }
     }
     .app-data-list{
         padding: 1rem 2rem;
+        @include media-breakpoint-down(md) {
+            padding: 1rem;
+        }
         .card-content, .ant-table-wrapper, .ant-spin-nested-loading, .ant-spin-container{
             height: 100%;
             .ant-table{
@@ -77,6 +89,15 @@
                             }
                         }
     
+                    }
+                }
+            }
+
+            @include media-breakpoint-down(lg) {
+                .ant-table-container{
+                    overflow-x: auto;
+                    .ant-table-content{
+                        width: 900px;
                     }
                 }
             }

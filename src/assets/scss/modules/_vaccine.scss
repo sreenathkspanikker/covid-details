@@ -4,6 +4,19 @@
         @include flex(center, space-between);
         .app-title{
             margin: 0;
+            @include flex(center, center);
+            span{
+                display: inline-flex;
+            }
+        }
+        @include media-breakpoint-down(md) {
+            display: block;
+            .form-group{
+                margin-top: 0.5rem;
+                .form-control{
+                    width: 100%;
+                }
+            }
         }
     }
     .app-cards{

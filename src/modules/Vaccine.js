@@ -9,6 +9,7 @@ export const Vaccine = (props) => {
   const [data, setData] = useState([])
   const [allData, setAlldata] = useState([])
   const [details, setDetails] = useState({});
+  const [isSearch, setSearch] = useState(true);
 
   useEffect(() => {
       let isLoad = true
@@ -31,8 +32,12 @@ export const Vaccine = (props) => {
   const handleClick = (key, data, idx) => {
     setDetails({key, data, idx })
     props.scrollReset(true)
+    setSearch(false)
   }
-  const handleClose = (e) => setDetails({key: e.key, data: e.data })
+  const handleClose = (e) =>{
+    setDetails({key: e.key, data: e.data })
+    setSearch(true)
+  }
   const scrollReset = (e) => props.scrollReset(e)
 
   const handleFilter = e => {
@@ -43,17 +48,22 @@ export const Vaccine = (props) => {
   return (
     <div className={`app-vaccine ${details.key}`}>
       <div className='app-title-wrap'>
-        <Components.Title className="mt-0">Covid vaccine list</Components.Title>
-        <Form.Group className='form-group app-serch-box'>
-          <FormControl type="search" placeholder="Search" aria-label="Search" onChange={e=> handleFilter(e)}/>
-          <Components.Icon name="search" />
-        </Form.Group>
+        <Components.Title className="mt-0">
+          Covid vaccine list
+          <span>Total vaccine - {list?.length > 0 && list?.length}</span>
+        </Components.Title>
+        {isSearch && (
+          <Form.Group className='form-group app-serch-box'>
+            <FormControl type="search" placeholder="Search" aria-label="Search" onChange={e=> handleFilter(e)}/>
+            <Components.Icon name="search" />
+          </Form.Group>
+        )}
       </div>
       {!details.key ? 
         <Row>
             {list?.length > 0 ? list?.map((items, idx) => {
               return (
-                  <Col sm={4} key={idx}>
+                  <Col md={6} lg={4} key={idx}>
                     <Components.Cards className="card-vaccine-box">
                       <h3><Badge>{idx + 1}</Badge>{items.candidate}</h3>
                       <p><span>Trial Phase:</span>{items.trialPhase}</p>

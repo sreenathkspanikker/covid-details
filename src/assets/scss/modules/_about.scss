@@ -1,5 +1,8 @@
 .app-about{
     padding: 3rem;
+    @include media-breakpoint-down(lg) {
+        padding: 1.5rem;
+     }
     .figure{
         border-radius: 10px;
         overflow: hidden;
@@ -15,19 +18,56 @@
                 transform: scale(1.6);
             }
         }
+        @include media-breakpoint-down(lg) {
+            display: none
+         }
     }
-    h3{
-        &.app-title{
-            @include font-family($font-main, 2em, $color_six, 700, 1);
-            margin: 0;
-            margin-bottom: 0.5rem;
+    .app-titles{
+        margin-bottom: 0.5rem;
+        @include media-breakpoint-down(lg) {
+            @include flex(center, normal);
+        }
+        @include media-breakpoint-down(lg) {
+            @include flex(normal, normal);
+        }
+        .figure{
+            display: none;
+            width: 80px;
+            height: 80px;
+            flex: none;
+            margin-right: 1rem;
+            @include media-breakpoint-down(lg) {
+                display: block;
+                border-radius: 100%
+            }
+            @include media-breakpoint-down(sm) {
+                width: 55px;
+                height: 55px;
+                border-width: 1.5px;
+            }
+        }
+        h3{
+            &.app-title{
+                @include font-family($font-main, 2em, $color_six, 700, 1);
+                margin: 0;
+                em {
+                    @include font-family($font-main, 0.5em, $color_four, 500, 1);
+                    letter-spacing: 0.1em;
+                    margin-top: 0.5rem;
+                    font-style: normal;
+                    display: block;
+                }
+                @include media-breakpoint-down(lg) {
+                    font-size: 1.5em;
+                }
+                @include media-breakpoint-down(sm) {
+                    font-size: 1.1em;
+                }
+    
+            }
         }
     }
-    h4{
-        @include font-family($font-main, 1.3em, $color_four, 500, 1);
-        letter-spacing: 0.1em;
-        margin-bottom: 1.5rem;
-    }
+
     p{
         @include font-family($font-main, 1em, $color_five, 400, 1.4em);
     }

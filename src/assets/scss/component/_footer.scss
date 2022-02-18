@@ -1,0 +1,26 @@
+.app-footer{
+    width: 100%;
+    z-index: 99;
+    display: none;
+    background-color: $color_two;
+    @include position(fixed, auto, auto, 0, 0);
+    @include media-breakpoint-down(sm) {
+        @include flex(center, space-between);
+    }
+    .nav-link{
+        flex: 1 1;
+        height: 45px;
+        overflow: hidden;
+        color: $color_six;
+        text-align: center;
+        padding: 0.8rem 1rem;
+        @include flex(center, center);
+        &:hover{
+            background-color: rgba($color_seven, 0.2);
+        }
+        &.active{
+            color: white;
+            background-color: rgba($color_seven, 1);
+        }
+    }
+}

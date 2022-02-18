@@ -1,5 +1,11 @@
 .app-content{
-    flex: 1;
+    width: 100%;
+    @include media-breakpoint-down(lg) {
+        overflow: hidden;
+    }
+    @include media-breakpoint-down(sm) {
+        padding-bottom: 45px;
+    }
     .app-coponents{
         flex: 1;
         height: 100%;
@@ -8,8 +14,14 @@
         @include flex(normal, normal);
         .scrollbar-container{
             padding: 1.5rem;
+            @include media-breakpoint-down(md) {
+                padding: 1rem; 
+            }
             .ps__rail-y{
                 background-color: transparent !important;
+                @include media-breakpoint-down(sm) {
+                    display: none;
+                }
             }
             .ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y{
                 background-color: $color_seven;

@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import * as Modules from "../modules";
-// import * as Components from "../components";
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 export const Content = (props) => {
@@ -12,15 +11,14 @@ export const Content = (props) => {
   }
 
   const renderMenu = (e) => {
-    console.log(e);
     switch (e) {
-      case 'Country List':
+      case 'list':
         return <Modules.CountryList  />
-      case 'Vaccine':
+      case 'vaccine':
         return <Modules.Vaccine scrollReset={e => scrollReset(e)} />
-      case 'Covid Info':
+      case 'info':
         return <Modules.CovidInfo  />
-      case 'About Me':
+      case 'about':
         return <Modules.About />
       default:
         return <Modules.TotalCounts  />

@@ -11,7 +11,9 @@
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
-  overflow: hidden;
+  @include media-breakpoint-up(sm) {
+    overflow: hidden;
+  }
 }
 
 /* Sections
@@ -24,9 +26,11 @@ html {
 body {
   margin: 0;
   font-family: $font-main;
-  overflow: hidden;
   font-size: 16px;
   background-color: $color_one;
+  @include media-breakpoint-up(sm) {
+    overflow: hidden;
+  }
 }
 
 /**

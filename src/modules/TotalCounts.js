@@ -95,22 +95,22 @@ export const TotalCounts = () => {
                 <Components.Cards title="Caovid-19 Data" className='app-totals'>
                     <Row>
                         <Col sm={6}>
-                            <Components.Cards className="app-totals-list">
+                            <Components.Cards title="Total" className="app-totals-list">
                                 <ul>
-                                    <li><span>Total Case</span>{chartData.cases}</li>
-                                    <li><span>Total Death</span>{chartData.deaths}</li>
-                                    <li><span>Total Recovered</span>{chartData.recovered}</li>
-                                    <li><span>Total Active</span>{chartData.active}</li>
+                                    <li><span>Case</span>{chartData.cases}</li>
+                                    <li><span>Death</span>{chartData.deaths}</li>
+                                    <li><span>Recovered</span>{chartData.recovered}</li>
+                                    <li><span>Active</span>{chartData.active}</li>
                                 </ul>
                             </Components.Cards>
                         </Col>
                         <Col sm={6}>
-                            <Components.Cards className="app-totals-list">
+                            <Components.Cards title="Todays" className="app-totals-list">
                                 <ul>
-                                    <li><span>Total Critical</span>{chartData.critical}</li>
-                                    <li><span>Total Todays Cases</span>{chartData.todayCases}</li>
-                                    <li><span>Total Todays Recovered</span>{chartData.todayRecovered}</li>
-                                    <li><span>Total Deaths</span>{chartData.todayDeaths}</li>
+                                    <li><span>Critical</span>{chartData.critical}</li>
+                                    <li><span>Cases</span>{chartData.todayCases}</li>
+                                    <li><span>Recovered</span>{chartData.todayRecovered}</li>
+                                    <li><span>Deaths</span>{chartData.todayDeaths}</li>
                                 </ul>
                             </Components.Cards>
                         </Col>
@@ -118,8 +118,10 @@ export const TotalCounts = () => {
                 </Components.Cards>
             </Col>
             <Col sm={12}>
-                <Components.Cards title="Caovid-19 Analytics">
-                    <Bar options={options} data={data} />
+                <Components.Cards title="Caovid-19 Analytics" className="app-chart-bar-wrap">
+                    <div className='chart-wrap'>
+                        <Bar options={options} data={data} />
+                    </div>
                 </Components.Cards>
             </Col>
         </Row>

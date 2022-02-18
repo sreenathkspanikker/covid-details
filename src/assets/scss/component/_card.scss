@@ -3,13 +3,19 @@
     padding: 2rem 3rem;
     border-radius: 1rem;
     background-color: $color_three;
+    @include media-breakpoint-down(lg) {
+        padding: 1.5rem; 
+    }
+    @include media-breakpoint-down(md) {
+        padding: 1rem; 
+    }
     .card-title{
         letter-spacing: 0.15rem;
         margin-bottom: 1.5rem;
         text-transform: uppercase;
         @include font-family($font-main, 1em, $color_six, 600, 1em); 
-    }
-    .card-content{
-
+        @include media-breakpoint-down(sm) {
+            font-size: 0.8em;
+        }
     }
 }

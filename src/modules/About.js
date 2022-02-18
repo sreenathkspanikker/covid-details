@@ -2,22 +2,39 @@ import React from 'react'
 import { Button, ButtonGroup, Col, Figure, Row } from 'react-bootstrap';
 import * as Components from "../components";
 import ImgSreenath from '../assets/images/img-sreenath.jpeg'
+import ReactImageFallback from "react-image-fallback";
 
 export const About = () => {
   return (
     <Components.Cards className="app-about">
         <Row>
-            <Col sm={4}>
-                <Figure>
-                    <Figure.Image src={ImgSreenath} fluid />
+            <Col lg={4}>
+                <Figure className='main'>
+                    <ReactImageFallback
+                        src={ImgSreenath}
+                        fallbackImage={ImgSreenath}
+                        initialImage={ImgSreenath}
+                        alt="Profile Img"
+                        className="img-fluid" />
                 </Figure>
             </Col>
-            <Col sm={8}>
+            <Col lg={8}>
                 <article>
-                    <Components.Title>
-                        SREENATH KS PANIKKER
-                    </Components.Title>
-                    <h4>Application Development Senior Analyst</h4>
+                    <div className='app-titles'>
+                        <Figure>
+                            <ReactImageFallback
+                            src={ImgSreenath}
+                            fallbackImage={ImgSreenath}
+                            initialImage={ImgSreenath}
+                            alt="Profile Img"
+                            className="img-fluid" />
+                        </Figure>
+                        <Components.Title>
+                            SREENATH KS PANIKKER
+                            <em>Application Development Senior Analyst</em>
+                        </Components.Title>
+                    </div>
+
                     <p>
                         I'm an experienced Front-end engineer with advanced level React.Js, Redux, Angular.Js 2x, WebSocket, Git, REST API, JavaScript, JavaScript frameworks, HTML5, SASS, SCSS & Bootstrap. I have worked on several high-profile, dynamically large scale projects over the past 5years. I've had exposure in working with private and small business sectors, and numerous contracts during the past years.
 

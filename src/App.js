@@ -11,6 +11,7 @@ function App() {
     <div className="App">
         <Components.Sidebar handleChange={(e)=> handleChange(e)}/>
         <Modules.Content menu={menu}/>
+        <Components.Footer handleChange={(e)=> handleChange(e)}/>
     </div>
   );
 }

@@ -29,9 +29,15 @@
         background: $color_two;
         border-color: $color_two;
         color: $color_six;
+        @include media-breakpoint-down(md) {
+            margin-right: 0.2rem;
+        }
         &:hover{
             border-color: $color_seven;
         }
+    }
+    .ant-pagination-prev{
+        margin-right: 0.2rem;
     }
     .ant-pagination-jump-next,
     .ant-pagination-jump-prev{

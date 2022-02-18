@@ -4,7 +4,7 @@ import * as Components from "../components"
 export const CovidInfo = () => {
   return (
     <Components.Cards className="app-covid-info">
-        <Components.Title>COVID-19</Components.Title>
+        <Components.Title className="mt-0">COVID-19</Components.Title>
         <p>
             Coronavirus disease 2019 (COVID-19) is a contagious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). The first known case was identified in Wuhan, China, in December 2019. The disease has since spread worldwide, leading to an ongoing pandemic.
 
@@ -53,7 +53,7 @@ export const CovidInfo = () => {
             <li>International travel-related control measures</li>
         </ol>
         <Components.Title>Treatment</Components.Title>
-        <p>
+        <p className='mb-0'>
             There is no specific, effective treatment or cure for coronavirus disease 2019 (COVID-19), the disease caused by the SARS-CoV-2 virus. One year into the pandemic, highly effective vaccines have now been introduced and are beginning to reduce mortality related to SARS-CoV-2; however, for those awaiting vaccination, as well as for the estimated millions of immunocompromised persons who are unlikely to respond robustly to vaccination, treatment remains important. Thus, the lack of progress developing effective treatments means that the cornerstone of management of COVID-19 has been supportive care, which includes treatment to relieve symptoms, fluid therapy, oxygen support and prone positioning as needed, and medications or devices to support other affected vital organs
 
         </p>
