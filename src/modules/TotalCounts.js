@@ -92,7 +92,7 @@ export const TotalCounts = () => {
     return (
         <Row>
             <Col sm={12}>
-                <Components.Cards title="Caovid-19 Data" className='app-totals'>
+                <Components.Cards title="Covid-19 Data" className='app-totals'>
                     <Row>
                         <Col sm={6}>
                             <Components.Cards title="Total" className="app-totals-list">
@@ -118,7 +118,7 @@ export const TotalCounts = () => {
                 </Components.Cards>
             </Col>
             <Col sm={12}>
-                <Components.Cards title="Caovid-19 Analytics" className="app-chart-bar-wrap">
+                <Components.Cards title="Covid-19 Analytics" className="app-chart-bar-wrap">
                     <div className='chart-wrap'>
                         <Bar options={options} data={data} />
                     </div>
