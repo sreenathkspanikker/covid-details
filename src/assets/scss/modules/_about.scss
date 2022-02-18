@@ -26,9 +26,7 @@
         margin-bottom: 0.5rem;
         @include media-breakpoint-down(lg) {
             @include flex(center, normal);
-        }
-        @include media-breakpoint-down(lg) {
-            @include flex(normal, normal);
+            margin-bottom: 1rem;
         }
         .figure{
             display: none;
@@ -38,7 +36,7 @@
             margin-right: 1rem;
             @include media-breakpoint-down(lg) {
                 display: block;
-                border-radius: 100%
+                border-radius: 6px;
             }
             @include media-breakpoint-down(sm) {
                 width: 55px;

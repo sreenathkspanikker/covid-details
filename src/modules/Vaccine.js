@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Button, Badge, Form, FormControl } from 'react-bootstrap';
+import { useWindowWidth } from '@react-hook/window-size'
 import * as Components from "../components";
 import { GET } from '../server';
 import { Empty } from 'antd';
@@ -10,6 +11,8 @@ export const Vaccine = (props) => {
   const [allData, setAlldata] = useState([])
   const [details, setDetails] = useState({});
   const [isSearch, setSearch] = useState(true);
+
+  const onlyWidth = useWindowWidth()
 
   useEffect(() => {
       let isLoad = true
@@ -50,7 +53,7 @@ export const Vaccine = (props) => {
       <div className='app-title-wrap'>
         <Components.Title className="mt-0">
           Covid vaccine list
-          <span>Total vaccine - {list?.length > 0 && list?.length}</span>
+          <span>{onlyWidth > 576 && 'Total vaccine -' } {list?.length > 0 && list?.length}</span>
         </Components.Title>
         {isSearch && (
           <Form.Group className='form-group app-serch-box'>
