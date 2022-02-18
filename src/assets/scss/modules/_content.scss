@@ -6,12 +6,15 @@
     @include media-breakpoint-down(sm) {
         padding-bottom: 45px;
     }
-    .app-coponents{
+    .app-components{
         flex: 1;
         height: 100%;
         overflow: hidden;
         flex-direction: column;
         @include flex(normal, normal);
+        @include media-breakpoint-down(sm) { 
+            padding: 1rem;
+         }
         .scrollbar-container{
             padding: 1.5rem;
             @include media-breakpoint-down(md) {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import * as Components from "../components";
 import { GET } from '../server'
+import { useWindowWidth } from '@react-hook/window-size'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -24,6 +25,7 @@ import {
   
 export const TotalCounts = () => {
     const [chartData, setChartdata] = useState([])
+    const onlyWidth = useWindowWidth()
 
     useEffect(() => {
       let isLoad = true
@@ -47,7 +49,18 @@ export const TotalCounts = () => {
             },
         },
     };
-    const labels = ['Cases', 'Deaths', 'Recovered', 'Active', 'Crittcal', 'Todays Case', 'Todays Recovered', 'Todays Death'];
+
+    const labels = [
+        `${onlyWidth > 576 ? 'Cases' : 'Cases'}`,
+        `${onlyWidth > 576 ? 'Deaths' : 'Deaths'}`,
+        `${onlyWidth > 576 ? 'Recovered' : 'Recovered'}`,
+        `${onlyWidth > 576 ? 'Active' : 'Active'}`,
+        `${onlyWidth > 576 ? 'Crittcal' : 'Crittcal'}`,
+        `${onlyWidth > 576 ? 'Todays Case' : 'T-C'}`,
+        `${onlyWidth > 576 ? 'Todays Recovered' : 'T-R'}`,
+        `${onlyWidth > 576 ? 'Todays Death' : 'T-D'}`  
+    ];
+
     const data = {
         labels: labels,
         datasets: [{

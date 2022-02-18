@@ -1,8 +1,11 @@
 import React, { useRef } from 'react'
 import * as Modules from "../modules";
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import { useWindowWidth } from '@react-hook/window-size'
+
 
 export const Content = (props) => {
+  const onlyWidth = useWindowWidth()
   const ps = useRef()
   
   const scrollReset = e => {
@@ -28,10 +31,12 @@ export const Content = (props) => {
   return (
     <div className='app-content'>
         {/* <Components.Header/> */}
-        <div className='app-coponents'>
+        <div className='app-components'>
+          {onlyWidth < 576 ? renderMenu(props.menu) : (
           <PerfectScrollbar containerRef={el => (ps.current = el)}>
             {renderMenu(props.menu)}
           </PerfectScrollbar>
+          )}
         </div>
     </div>
   )
