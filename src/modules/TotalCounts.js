@@ -5,6 +5,7 @@ import { GET } from '../server'
 import { useWindowWidth } from '@react-hook/window-size'
 import {
     Chart as ChartJS,
+    ArcElement,
     CategoryScale,
     LinearScale,
     BarElement,
@@ -12,9 +13,10 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
-  import { Bar } from 'react-chartjs-2';
+  import { Bar, Doughnut } from 'react-chartjs-2';
   
   ChartJS.register(
+    ArcElement,
     CategoryScale,
     LinearScale,
     BarElement,
@@ -133,7 +135,7 @@ export const TotalCounts = () => {
             <Col sm={12}>
                 <Components.Cards title="Covid-19 Analytics" className="app-chart-bar-wrap">
                     <div className='chart-wrap'>
-                        <Bar options={options} data={data} />
+                        {onlyWidth > 576 ? <Bar options={options} data={data} /> : <Doughnut options={options} data={data} /> }                        
                     </div>
                 </Components.Cards>
             </Col>
