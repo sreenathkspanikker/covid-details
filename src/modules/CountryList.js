@@ -141,22 +141,22 @@ export const CountryList = () => {
                   </span>
                 </h3>
                 <Row>
-                  <Col sm="3">
+                  <Col>
                     <Components.Cards title="Total Updated">
                       <h2>{record.updated}</h2>
                     </Components.Cards>
                   </Col>
-                  <Col sm="3">
+                  <Col>
                     <Components.Cards title="Todays Case">
                       <h2>{record.todayCases}</h2>
                     </Components.Cards>
                   </Col>
-                  <Col sm="3">
+                  <Col>
                     <Components.Cards title="Todays Death">
                       <h2>{record.todayDeaths}</h2>
                     </Components.Cards>
                   </Col>
-                  <Col sm="3">
+                  <Col>
                     <Components.Cards title="Todays Recovered">
                       <h2>{record.todayRecovered}</h2>
                     </Components.Cards>

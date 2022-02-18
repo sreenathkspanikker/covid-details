@@ -33,6 +33,9 @@
                             &:before{
                                 background-color: rgba(white, 0.2) !important;
                             }
+                            @include media-breakpoint-down(md) {
+                                font-size: 0.8em;
+                            }
                         }
                     }
                 }
@@ -42,6 +45,10 @@
                             @include font-family($font-main, 1em, $color_five, 600, 1);
                             &.ant-table-cell-row-hover{
                                 background-color:  $color_two;
+                            }
+                            @include media-breakpoint-down(md) {
+                                font-size: 0.8em;
+                                padding: 0.5rem;
                             }
                         }
     

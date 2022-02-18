@@ -1,29 +1,44 @@
 .ap-caacine-details{
-    position: relative;
-    .btn-closes{
-        z-index: 1;
-        @include position(absolute, 2.1rem, 3rem, auto, auto);
-    }
     h2{
         @include font-family($font-main, 1.7em, $color_six, 700, 1em); 
         border-bottom: 1px solid $color_four;
-        @include flex(center, normal);
+        @include flex(center, space-between);
         text-transform: uppercase;
         letter-spacing: 0.12em;
         margin-bottom: 1rem;
         padding-bottom: 1rem;
-        .badge {
-            padding: 0;
-            width: 35px;
-            height: 35px;
-            margin-right: 1rem;
-            border-radius: 4px;
-            letter-spacing: 0.01em;
-            @include flex(center, center);
-            border: 2px solid $color_seven;
-            background-color: transparent !important;
-            @include font-family('Sans-serif', 0.56em, $color_seven, 600, 1); 
+        @include media-breakpoint-down(md) {
+            font-size: 1.25em;
+         }
+        span{
+            &.text-wrap{
+                @include flex(center, center);
+            }
+            &.badge {
+                padding: 0;
+                width: 35px;
+                height: 35px;
+                margin-right: 1rem;
+                border-radius: 4px;
+                letter-spacing: 0.01em;
+                @include flex(center, center);
+                border: 2px solid $color_seven;
+                background-color: transparent !important;
+                @include font-family('Sans-serif', 0.56em, $color_seven, 600, 1); 
+            }
         }
+        .btn-closes{
+            width: 32px;
+            height: 32px;
+            font-size: 2rem;
+            @include media-breakpoint-down(md) {
+                width: 25px;
+                height: 25px;
+                font-size: 1.5rem;
+             }
+        }
+  
+
     }
     h3{
         @include font-family($font-main, 1em, $color_six, 600, 1em); 

@@ -35,19 +35,22 @@ export const VaccinDetails = (props) => {
 
     return (
         <Components.Cards className="ap-caacine-details">
-              <OverlayTrigger  
-                placement="bottom" 
-                delay={{ show: 250, hide: 400 }}  
-                overlay={<Tooltip>Close / Back to Vaccine List</Tooltip>}
-              >
-                <Button variant='closes' onClick={handleClose}>
-                    <Components.Icon name="close" />
-                </Button>
-            </OverlayTrigger>
             {details?.map((item, i) => {
                 return (
                     <div key={i}>
-                        <h2><Badge>{idx + 1}</Badge>{item.candidate}</h2>
+                        <h2>
+                            <span className='text-wrap'>
+                                <Badge>{idx + 1}</Badge>{item.candidate}
+                            </span>
+                            <OverlayTrigger  
+                                placement="bottom" 
+                                delay={{ show: 250, hide: 400 }}  
+                                overlay={<Tooltip>Close / Back to Vaccine List</Tooltip>}>
+                                <Button variant='closes' onClick={handleClose}>
+                                    <Components.Icon name="close" />
+                                </Button>
+                            </OverlayTrigger>
+                        </h2>
                         <h3>Mechanism</h3>
                         <p>{item.mechanism}</p>
                         <h3>Trial Phase</h3>
