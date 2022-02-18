@@ -53,14 +53,14 @@ export const TotalCounts = () => {
     };
 
     const labels = [
-        `${onlyWidth > 576 ? 'Cases' : 'Cases'}`,
-        `${onlyWidth > 576 ? 'Deaths' : 'Deaths'}`,
-        `${onlyWidth > 576 ? 'Recovered' : 'Recovered'}`,
-        `${onlyWidth > 576 ? 'Active' : 'Active'}`,
-        `${onlyWidth > 576 ? 'Crittcal' : 'Crittcal'}`,
-        `${onlyWidth > 576 ? 'Todays Case' : 'T-C'}`,
-        `${onlyWidth > 576 ? 'Todays Recovered' : 'T-R'}`,
-        `${onlyWidth > 576 ? 'Todays Death' : 'T-D'}`  
+       'Total Cases',
+       'Total Deaths',
+       'Total Recovered',
+       'Total Active',
+       'Total Crittcal',
+       'Todays Case',
+       'Todays Recovered',
+       'Todays Death' 
     ];
 
     const data = {
@@ -135,7 +135,7 @@ export const TotalCounts = () => {
             <Col sm={12}>
                 <Components.Cards title="Covid-19 Analytics" className="app-chart-bar-wrap">
                     <div className='chart-wrap'>
-                        {onlyWidth > 576 ? <Bar options={options} data={data} /> : <Doughnut options={options} data={data} /> }                        
+                        {onlyWidth > 576 ? <Bar options={options} data={data} /> : <Doughnut  data={data} /> }                        
                     </div>
                 </Components.Cards>
             </Col>
