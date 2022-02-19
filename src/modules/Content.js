@@ -25,13 +25,12 @@ export const Content = (props) => {
       case 'about':
         return <Modules.About />
       default:
-        return <Modules.TotalCounts  />
+        return <Modules.TotalCount  />
     }
   }
   
   return (
     <div className='app-content'>
-        {/* <Components.Header/> */}
         <div className='app-components'>
           {onlyWidth < 576 ? renderMenu(props.menu) : (
           <PerfectScrollbar containerRef={el => (ps.current = el)}>

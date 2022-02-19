@@ -1,156 +1,128 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
+import { Col, Row } from 'react-bootstrap';
 import * as Components from "../components";
-import { GET } from '../server'
-import {  Row, Col } from 'react-bootstrap';
+import { MyContext } from '../App'
+import { useWindowWidth } from '@react-hook/window-size'
+import {
+    Chart as ChartJS,
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+  import { Bar, Doughnut } from 'react-chartjs-2';
+  
+  ChartJS.register(
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+  
+export const TotalCount = () => {
+    const onlyWidth = useWindowWidth()
+    const data = useContext(MyContext)
 
-export const TotalCount = (props) => {
-    const [data, setData] = useState({})
-    const [sumPerc, setSumperc] = useState('')
-    const [deathPerc, setDeathperc] = useState('')
-    const [recoveredPerc, setRecoveredperc] = useState('')
-    const [todaycasePerc, setTodatcaseperc] = useState('')
-    const [todayerecoveredPerc, setTodayrecoveredperc] = useState('')
-    const [todayDeathsPerc, setTodaydeathsperc] = useState('')
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+        },
+    };
 
-    const [criticalPerc, setCriticaperc] = useState('')
-    const [activePerc, setActiveperc] = useState('')
-    const [affectedCountries, setAffectedcountriesperc] = useState('')
+    const labels = [
+       'Total Cases',
+       'Total Deaths',
+       'Total Recovered',
+       'Total Active',
+       'Total Crittcal',
+       'Todays Case',
+       'Todays Recovered',
+       'Todays Death' 
+    ];
 
-    useEffect(() => {
-      let isLoad = true
-      if (isLoad) {
-        const fetchData = async () => {
-            const res = await GET('/all')
-            if (res) {
-                setData(res)
-                setSumperc((res.cases * 100  / res.testsPerOneMillion ).toString().slice(0, 2));
-                setDeathperc(res.deaths * 100 / res.active)
-                setRecoveredperc((res.recovered * 100 / res.active).toString().slice(0, 2))
-                setTodatcaseperc((res.todayCases * 100 / res.casesPerOneMillion).toString().slice(0, 2))
-                setTodayrecoveredperc((res.todayRecovered * 100 / res.casesPerOneMillion).toString().slice(0, 2))
-                setTodaydeathsperc((res.todayDeaths * 100 / res.casesPerOneMillion).toString().slice(0, 2))
-                
-                setCriticaperc((res.critical * 100 / res.active).toString().slice(0, 2))
-                setActiveperc((res.active * 100 / res.tests).toString().slice(0, 2))
-                setAffectedcountriesperc((res.affectedCountries * 100 / 195 ).toString().slice(0, 2))
-            }
-          }
-          fetchData()
-      }
-      return () => {
-        isLoad = false
-      }
-    }, [])
+    const chartData = {
+        labels: labels,
+        datasets: [{
+            label: 'My First Dataset',
+            data: [
+                data?.chart?.cases, 
+                data?.chart?.deaths, 
+                data?.chart?.recovered, 
+                data?.chart?.active,
+                data?.chart?.critical,
+                data?.chart?.todayCases,
+                data?.chart?.todayRecovered,
+                data?.chart?.todayDeaths,
+            ],
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)',
+            'rgba(109, 102, 206, 0.2)',
+            ],
+            borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(201, 203, 207)',
+            'rgba(109, 102, 206)',
+            ],
+            borderWidth: 1
+        }]
+    };
 
+    return (
+        <Row>
+            <Col sm={12}>
+                <Components.Cards title="Covid-19 Data" className='app-totals'>
+                    <Row>
+                        <Col sm={6}>
+                            <Components.Cards title="Total" className="app-totals-list">
+                                <ul>
+                                    <li><span>Case</span>{data?.chart?.cases}</li>
+                                    <li><span>Death</span>{data?.chart?.deaths}</li>
+                                    <li><span>Recovered</span>{data?.chart?.recovered}</li>
+                                    <li><span>Active</span>{data?.chart?.active}</li>
+                                </ul>
+                            </Components.Cards>
+                        </Col>
+                        <Col sm={6}>
+                            <Components.Cards title="Todays" className="app-totals-list">
+                                <ul>
+                                    <li><span>Critical</span>{data?.chart?.critical}</li>
+                                    <li><span>Cases</span>{data?.chart?.todayCases}</li>
+                                    <li><span>Recovered</span>{data?.chart?.todayRecovered}</li>
+                                    <li><span>Deaths</span>{data?.chart?.todayDeaths}</li>
+                                </ul>
+                            </Components.Cards>
+                        </Col>
+                    </Row>
+                </Components.Cards>
+            </Col>
+            <Col sm={12}>
+                <Components.Cards title="Covid-19 Analytics" className="app-chart-bar-wrap">
+                    <div className='chart-wrap'>
+                        {onlyWidth > 576 ? <Bar options={options} data={chartData} /> : <Doughnut  data={chartData} /> }                        
+                    </div>
+                </Components.Cards>
+            </Col>
+        </Row>
 
-  return (
-    <React.Fragment>
-      <Components.Title className="mt-0">Covid toatal case details</Components.Title>
-      <Row>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Total Cases</span>{data.cases}
-                    </h3>
-                    <Components.Cahrt textColor="#6655fe" pathColor="#6655fe" percent={sumPerc}/>
-                </div>
-            </Components.Cards>
-          </Col>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Total Recovered</span>{data.recovered }
-                    </h3>
-                    <Components.Cahrt textColor='#b423c1' pathColor='#b423c1' percent={recoveredPerc}/>
-                </div>
-            </Components.Cards>
-          </Col>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Total Death</span>{data.deaths }
-                    </h3>
-                    <Components.Cahrt textColor='#9433f0' pathColor='#9433f0' percent={deathPerc}/>
-                </div>
-            </Components.Cards>
-          </Col>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Today Cases</span>{data.todayCases}
-                    </h3>
-                    <Components.Cahrt textColor="#f69b2f" pathColor="#f69b2f" percent={todaycasePerc}/>
-                </div>
-            </Components.Cards>
-          </Col>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Today Recovered</span>{data.todayRecovered }
-                    </h3>
-                    <Components.Cahrt textColor='#3fb0ef' pathColor='#3fb0ef' percent={todayerecoveredPerc}/>
-                </div>
-            </Components.Cards>
-          </Col>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Today Death</span>{data.todayDeaths }
-                    </h3>
-                    <Components.Cahrt textColor='#50d8a7' pathColor='#50d8a7' percent={todayDeathsPerc}/>
-                </div>
-            </Components.Cards>
-          </Col>
-
-
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Critical</span>{data.critical}
-                    </h3>
-                    <Components.Cahrt textColor="#5fff62" pathColor="#5fff62" percent={criticalPerc}/>
-                </div>
-            </Components.Cards>
-          </Col>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Active</span>{data.active }
-                    </h3>
-                    <Components.Cahrt textColor='#ff6191' pathColor='#ff6191' percent={activePerc}/>
-                </div>
-            </Components.Cards>
-          </Col>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>population</span>{data.population }
-                    </h3>
-                    <Components.Cahrt textColor='#e21313' pathColor='#e21313' percent={100}/>
-                </div>
-            </Components.Cards>
-          </Col>
-          <Col sm={4}>
-            <Components.Cards className="app-total-count">
-                <div className='chart-content'>
-                    <h3>
-                        <span>Affected Countries</span>{data.affectedCountries }
-                    </h3>
-                    <Components.Cahrt textColor='#ffee5f' pathColor='#ffee5f' percent={affectedCountries}/>
-                </div>
-            </Components.Cards>
-          </Col>
-
-      </Row>
-    </React.Fragment>
-  )
+    )
 }
