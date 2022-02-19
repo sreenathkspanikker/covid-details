@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col, Button, Badge, Form, FormControl } from 'react-bootstrap';
 import { useWindowWidth } from '@react-hook/window-size'
 import * as Components from "../components";
-import { GET } from '../server';
 import { Empty } from 'antd';
+import { useSelector, useDispatch } from 'react-redux'
+import { getVaccineInfo } from '../redux/'
 
 export const Vaccine = (props) => {
   const [list, setList] = useState([])
@@ -12,25 +13,22 @@ export const Vaccine = (props) => {
   const [details, setDetails] = useState({});
   const [isSearch, setSearch] = useState(true);
 
+  const response = useSelector(state => state.vaccineData.data)
   const onlyWidth = useWindowWidth()
+  const dispatch = useDispatch()
 
   useEffect(() => {
       let isLoad = true
       if (isLoad) {
-        const fetchData = async () => {
-          const res = await GET('/vaccine')
-          if (res) {
-            setData(res)
-            setList(res.data)
-            setAlldata(res.data)
-          }
-        }
-        fetchData()
+        dispatch(getVaccineInfo())
+        setData(response)
+        setList(response.data)
+        setAlldata(response.data)
       }
       return () => {
         isLoad = false
       }
-  }, [])
+  }, [dispatch, response])
 
   const handleClick = (key, data, idx) => {
     setDetails({key, data, idx })

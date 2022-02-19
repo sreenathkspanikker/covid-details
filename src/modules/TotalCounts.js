@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap';
 import * as Components from "../components";
-import { GET } from '../server'
+import { useSelector, useDispatch } from 'react-redux'
+import { getDtaInfo } from '../redux/'
 import { useWindowWidth } from '@react-hook/window-size'
 import {
     Chart as ChartJS,
@@ -26,22 +27,11 @@ import {
   );
   
 export const TotalCounts = () => {
-    const [chartData, setChartdata] = useState([])
+    const chartData = useSelector(state => state.covidData.data)
     const onlyWidth = useWindowWidth()
+    const dispatch = useDispatch()
 
-    useEffect(() => {
-      let isLoad = true
-      if (isLoad) {
-        const fetchData = async () => {
-            const res = await GET('/all')
-            if (res) setChartdata(res)
-        }
-        fetchData()
-      }
-      return () => {
-        isLoad = false
-      }
-    }, [])
+    useEffect(() => dispatch(getDtaInfo()), [dispatch])
 
     const options = {
         responsive: true,
