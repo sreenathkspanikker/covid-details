@@ -14,6 +14,7 @@ export const Content = (props) => {
   }
 
   const renderMenu = (e) => {
+    scrollReset(true)
     switch (e) {
       case 'list':
         return <Modules.CountryList  />
