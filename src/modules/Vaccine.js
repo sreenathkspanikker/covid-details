@@ -13,19 +13,19 @@ export const Vaccine = (props) => {
   const [isSearch, setSearch] = useState(true);
 
   const onlyWidth = useWindowWidth()
-  const response = useContext(MyContext)
+  const  { vaccine }  = useContext(MyContext)
 
   useEffect(() => {
       let isLoad = true
       if (isLoad) {
-        setData(response?.vaccine)
-        setList(response?.vaccine?.data)
-        setAlldata(response?.vaccine?.data)
+        setData(vaccine)
+        setList(vaccine?.data)
+        setAlldata(vaccine?.data)
       }
       return () => {
         isLoad = false
       }
-  }, [response])
+  }, [vaccine])
 
   const handleClick = (key, data, idx) => {
     setDetails({key, data, idx })

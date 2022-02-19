@@ -5,8 +5,9 @@ import { useWindowWidth } from '@react-hook/window-size'
 
 
 export const Content = (props) => {
-  const onlyWidth = useWindowWidth()
+  const { menu } = props
   const ps = useRef()
+  const onlyWidth = useWindowWidth()
   
   const scrollReset = e => {
     const curr = ps.current
@@ -32,9 +33,9 @@ export const Content = (props) => {
   return (
     <div className='app-content'>
         <div className='app-components'>
-          {onlyWidth < 576 ? renderMenu(props.menu) : (
+          {onlyWidth < 576 ? renderMenu(menu) : (
           <PerfectScrollbar containerRef={el => (ps.current = el)}>
-            {renderMenu(props.menu)}
+            {renderMenu(menu)}
           </PerfectScrollbar>
           )}
         </div>

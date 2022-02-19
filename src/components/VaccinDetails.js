@@ -3,23 +3,24 @@ import { Button, Tooltip, OverlayTrigger, ButtonGroup, Badge } from 'react-boots
 import * as Components from "./";
 
 export const VaccinDetails = (props) => {
+    const { data } = props
     const [lastIndex, setLastindex] = useState({})
     const [details, setDetails] = useState([])
-    const [data, setData] = useState([])
+    const [vaccineData, setData] = useState([])
     const [idx, setIdx] = useState({})
 
     useEffect(() => {
         let isLoad = true
         if (isLoad) {
-            setIdx( props?.data?.idx)
-            setData(props?.data?.data)
-            setLastindex(props.data?.data?.data.length - 1)
-            setDetails(props?.data?.data?.data.filter((items, i) => i === props?.data?.idx && items))
+            setIdx(data?.idx)
+            setData(data?.data)
+            setLastindex(data?.data?.data.length - 1)
+            setDetails(data?.data?.data.filter((items, i) => i === data?.idx && items))
         }
         return () => {
             isLoad = false
         }
-    }, [props])
+    }, [data])
     
     const handleClose = () => {
         props.handleClose({key: false, data: {}, idx: null })
@@ -29,7 +30,7 @@ export const VaccinDetails = (props) => {
     const handleNav = (e) => {
         const value = e === 0 ? 0 : e
         setIdx(value)
-        setDetails(data?.data.filter((items, i) => i === value && items))
+        setDetails(vaccineData?.data.filter((items, i) => i === value && items))
         props.scrollReset(true)        
     }
 

@@ -8,7 +8,7 @@ export const CountryList = () => {
     let [data, setData] = useState([])
     const [allData, setAlldata] = useState([])
 
-    const response = useContext(MyContext)
+    const { country } = useContext(MyContext)
 
     const columns = [
       {
@@ -99,13 +99,13 @@ export const CountryList = () => {
     useEffect(() => {
       let isLoad = true
       if (isLoad) {
-        setData(response?.country)
-        setAlldata(response?.country)
+        setData(country)
+        setAlldata(country)
       }
       return () => {
         isLoad = false
       }
-    }, [response])
+    }, [country])
 
     const handleFilter = e => {
       const value = e.target.value

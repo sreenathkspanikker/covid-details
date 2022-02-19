@@ -27,7 +27,7 @@ import {
   
 export const TotalCount = () => {
     const onlyWidth = useWindowWidth()
-    const data = useContext(MyContext)
+    const { chart } = useContext(MyContext)
 
     const options = {
         responsive: true,
@@ -49,19 +49,19 @@ export const TotalCount = () => {
        'Todays Death' 
     ];
 
-    const chartData = {
+    const data = {
         labels: labels,
         datasets: [{
             label: 'My First Dataset',
             data: [
-                data?.chart?.cases, 
-                data?.chart?.deaths, 
-                data?.chart?.recovered, 
-                data?.chart?.active,
-                data?.chart?.critical,
-                data?.chart?.todayCases,
-                data?.chart?.todayRecovered,
-                data?.chart?.todayDeaths,
+                chart?.cases, 
+                chart?.deaths, 
+                chart?.recovered, 
+                chart?.active,
+                chart?.critical,
+                chart?.todayCases,
+                chart?.todayRecovered,
+                chart?.todayDeaths,
             ],
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -95,20 +95,20 @@ export const TotalCount = () => {
                         <Col sm={6}>
                             <Components.Cards title="Total" className="app-totals-list">
                                 <ul>
-                                    <li><span>Case</span>{data?.chart?.cases}</li>
-                                    <li><span>Death</span>{data?.chart?.deaths}</li>
-                                    <li><span>Recovered</span>{data?.chart?.recovered}</li>
-                                    <li><span>Active</span>{data?.chart?.active}</li>
+                                    <li><span>Case</span>{chart?.cases}</li>
+                                    <li><span>Death</span>{chart?.deaths}</li>
+                                    <li><span>Recovered</span>{chart?.recovered}</li>
+                                    <li><span>Active</span>{chart?.active}</li>
                                 </ul>
                             </Components.Cards>
                         </Col>
                         <Col sm={6}>
                             <Components.Cards title="Todays" className="app-totals-list">
                                 <ul>
-                                    <li><span>Critical</span>{data?.chart?.critical}</li>
-                                    <li><span>Cases</span>{data?.chart?.todayCases}</li>
-                                    <li><span>Recovered</span>{data?.chart?.todayRecovered}</li>
-                                    <li><span>Deaths</span>{data?.chart?.todayDeaths}</li>
+                                    <li><span>Critical</span>{chart?.critical}</li>
+                                    <li><span>Cases</span>{chart?.todayCases}</li>
+                                    <li><span>Recovered</span>{chart?.todayRecovered}</li>
+                                    <li><span>Deaths</span>{chart?.todayDeaths}</li>
                                 </ul>
                             </Components.Cards>
                         </Col>
@@ -118,7 +118,7 @@ export const TotalCount = () => {
             <Col sm={12}>
                 <Components.Cards title="Covid-19 Analytics" className="app-chart-bar-wrap">
                     <div className='chart-wrap'>
-                        {onlyWidth > 576 ? <Bar options={options} data={chartData} /> : <Doughnut  data={chartData} /> }                        
+                        {onlyWidth > 576 ? <Bar options={options} data={data} /> : <Doughnut  data={data} /> }                        
                     </div>
                 </Components.Cards>
             </Col>
