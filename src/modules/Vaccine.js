@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Row, Col, Button, Badge, Form, FormControl } from 'react-bootstrap';
 import { useWindowWidth } from '@react-hook/window-size'
 import * as Components from "../components";
 import { Empty } from 'antd';
-import { useSelector, useDispatch } from 'react-redux'
-import { getVaccineInfo } from '../redux/'
+import { MyContext } from '../App'
 
 export const Vaccine = (props) => {
   const [list, setList] = useState([])
@@ -13,22 +12,20 @@ export const Vaccine = (props) => {
   const [details, setDetails] = useState({});
   const [isSearch, setSearch] = useState(true);
 
-  const response = useSelector(state => state.vaccineData.data)
   const onlyWidth = useWindowWidth()
-  const dispatch = useDispatch()
+  const response = useContext(MyContext)
 
   useEffect(() => {
       let isLoad = true
       if (isLoad) {
-        dispatch(getVaccineInfo())
-        setData(response)
-        setList(response.data)
-        setAlldata(response.data)
+        setData(response?.vaccine)
+        setList(response?.vaccine?.data)
+        setAlldata(response?.vaccine?.data)
       }
       return () => {
         isLoad = false
       }
-  }, [dispatch, response])
+  }, [response])
 
   const handleClick = (key, data, idx) => {
     setDetails({key, data, idx })

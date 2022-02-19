@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import * as Components from "../components";
 import { Button, Table, Tooltip } from 'antd';
 import { Image, Row, Col, Form, FormControl } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'
-import { getCountryInfo } from '../redux/'
+import { MyContext } from '../App'
 
 export const CountryList = () => {
     let [data, setData] = useState([])
     const [allData, setAlldata] = useState([])
 
-    const response = useSelector(state => state.countryData.data)
-    const dispatch = useDispatch()
+    const response = useContext(MyContext)
 
     const columns = [
       {
@@ -101,14 +99,13 @@ export const CountryList = () => {
     useEffect(() => {
       let isLoad = true
       if (isLoad) {
-        dispatch(getCountryInfo())
-        setData(response)
-        setAlldata(response)
+        setData(response?.country)
+        setAlldata(response?.country)
       }
       return () => {
         isLoad = false
       }
-    }, [dispatch, response])
+    }, [response])
 
     const handleFilter = e => {
       const value = e.target.value
