@@ -32,10 +32,12 @@ export const Vaccine = (props) => {
     props.scrollReset(true)
     setSearch(false)
   }
+
   const handleClose = (e) =>{
     setDetails({key: e.key, data: e.data })
     setSearch(true)
   }
+
   const scrollReset = (e) => props.scrollReset(e)
 
   const handleFilter = e => {
@@ -74,7 +76,11 @@ export const Vaccine = (props) => {
               )
             }): <Components.Cards className="card-empty"><Empty image={Empty.PRESENTED_IMAGE_SIMPLE} /></Components.Cards>}
         </Row>
-        : <Components.VaccinDetails data={details} handleClose={e => handleClose(e)} scrollReset={(e)=> scrollReset(e)}/>
+        : <Components.VaccinDetails 
+          data={details} 
+          handleClose={e => handleClose(e)} 
+          scrollReset={(e)=> scrollReset(e)} 
+        />
       }
 
     </div>

@@ -35,7 +35,8 @@ export const VaccinDetails = (props) => {
     }
 
     return (
-        <Components.Cards className="ap-caacine-details">
+        <Components.Cards 
+        className="ap-caacine-details">
             {details?.map((item, i) => {
                 return (
                     <div key={i}>
